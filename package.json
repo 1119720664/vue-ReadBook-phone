@@ -10,10 +10,14 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "epubjs": "^0.3.71",
+    "i18n": "^0.8.3",
+    "lodash": "^4.17.11",
     "vue": "^2.5.21",
+    "vue-i18n": "^8.8.0",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "epubjs":"^0.3.83"
+    "web-storage-cache": "^1.0.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.3.0",
