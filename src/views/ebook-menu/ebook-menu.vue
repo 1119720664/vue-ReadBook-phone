@@ -19,6 +19,7 @@
     <book-setting-font></book-setting-font>
     <book-setting-font-popop></book-setting-font-popop>
     <book-setting-theme></book-setting-theme>
+    <book-setting-progress></book-setting-progress>
   </div>
 
 </template>
@@ -29,6 +30,7 @@
   import BookSettingFont from "../ebook-setting-font/ebook-setting-font.vue"
   import BookSettingFontPopop from "../ebook-setting-font-popop/ebook-setting-font-popop.vue"
   import BookSettingTheme from "../ebook-setting-theme/ebook-setting-theme.vue"
+  import BookSettingProgress from "../ebook-setting-progress/ebook-setting-progress.vue"
 
   export default {
     name: "EbookMenu",
@@ -45,7 +47,8 @@
     components: {
       BookSettingFont,
       BookSettingFontPopop,
-      BookSettingTheme
+      BookSettingTheme,
+      BookSettingProgress
     }
   }
 </script>

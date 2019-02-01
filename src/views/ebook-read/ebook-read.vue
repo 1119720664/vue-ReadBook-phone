@@ -107,6 +107,13 @@
           contents.addStylesheet(`${process.env.VUE_APP_RES_URL}/fonts/montserrat.css`)
           contents.addStylesheet(`${process.env.VUE_APP_RES_URL}/fonts/tangerine.css`)
         })
+
+        /*设置分页,必须是等书加载完成*/
+        this.book.ready.then(() => {
+          return this.book.locations.generate(750 * (window.innerWidth / 375) * (getFontSize(this.fileName) / 16)).then((locations) => {
+            this.setBookAvailable(true)
+          })
+        })
       },
       prevPage() {
         this.rendition.prev()
@@ -136,7 +143,8 @@
         setFontFamilyVisible: "Book/setFontFamilyVisible",
         setDefaultFontFamily: "Book/setDefaultFontFamily",
         setFontSize: "Book/setFontSize",
-        setDefaultTheme: "Book/setDefaultTheme"
+        setDefaultTheme: "Book/setDefaultTheme",
+        setBookAvailable: "Book/setBookAvailable"
       })
     }
   }
