@@ -17,6 +17,8 @@
     getFontSize,
     getTheme,
     saveTheme,
+    saveLocation,
+    getLocation
   } from "common/js/localStorage"
 
   export default {
@@ -70,6 +72,13 @@
             this.setFontSize(fontSize)
           }
 
+          /*初始化设置是否存在location*/
+          const location = getLocation(this.filename)
+          if (location) {
+            this.display(location)
+            this.refreshLocation()
+          }
+
           /*设置主题*/
           let defaultTheme = getTheme(this.filename)
           if (!defaultTheme) {
@@ -112,16 +121,22 @@
         this.book.ready.then(() => {
           return this.book.locations.generate(750 * (window.innerWidth / 375) * (getFontSize(this.fileName) / 16)).then((locations) => {
             this.setBookAvailable(true)
+            this.refreshLocation()
+            /*加载完成后显示进度的位置*/
           })
         })
       },
       prevPage() {
         this.rendition.prev()
         this.hideTitleAndMenu()
+        this.refreshLocation()
+        /*存储当前读取的进度放在location*/
       },
       nextPage() {
         this.rendition.next()
         this.hideTitleAndMenu()
+        this.refreshLocation()
+        /*存储当前读取的进度放在location*/
       },
       hideTitleAndMenu(){
         if (this.menuVisible) {
@@ -135,6 +150,23 @@
         this.setSettingVisible(-1)
         this.setFontFamilyVisible(false)
       },
+
+      refreshLocation() {  /*存储当前读取的进度放在location*/
+        const currentLocation = this.currentBook.rendition.currentLocation()
+        const progress = this.currentBook.locations.percentageFromCfi(currentLocation.start.cfi)
+        const startCfi = currentLocation.start.cfi;
+        /*通过第一个字获取当前读取进度*/
+        this.setProgress(Math.floor(progress * 100))
+        this.setSection(currentLocation.start.index)
+        saveLocation(this.fileName, startCfi)
+      },
+      display(target) {
+        if (target) {
+          return this.currentBook.rendition.display(target)
+        } else {
+          return this.currentBook.rendition.display()
+        }
+      },
       ...mapActions({
         setFileName: 'Book/setFileName',
         setMenuVisible: "Book/setMenuVisible",
@@ -144,7 +176,9 @@
         setDefaultFontFamily: "Book/setDefaultFontFamily",
         setFontSize: "Book/setFontSize",
         setDefaultTheme: "Book/setDefaultTheme",
-        setBookAvailable: "Book/setBookAvailable"
+        setBookAvailable: "Book/setBookAvailable",
+        setProgress: "Book/setProgress",
+        setSection: "Book/setSection"
       })
     }
   }

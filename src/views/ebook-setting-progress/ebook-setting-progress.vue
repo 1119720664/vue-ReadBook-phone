@@ -7,8 +7,8 @@
           <span class="icon-forward"></span>
         </div>
         <div class="progress-wrapper">
-          <div class="progress-icon-wrapper">
-            <span class="icon-back" @click="prevSection"></span>
+          <div class="progress-icon-wrapper" @click="prevSection">
+            <span class="icon-back"></span>
           </div>
           <input class="progress"
                  type="range"
@@ -26,6 +26,7 @@
           </div>
         </div>
         <div class="text-wrapper">
+          <span class="progress-section-text" v-if="currentBook">{{getSectionName}}</span>
           <span>{{bookAvailable ? progress + '%' : '加载中...'}}</span>
         </div>
       </div>
@@ -35,6 +36,8 @@
 
 <script type="text/ecmascript-6">
   import { mapGetters, mapActions } from "vuex"
+  import { saveLocation } from "common/js/localStorage"
+
   export default {
     name: 'EbookSettingProgress',
     computed: {
@@ -43,8 +46,18 @@
         settingVisible: "Book/settingVisible",
         currentBook: "Book/currentBook",
         progress: "Book/progress",
-        bookAvailable: "Book/bookAvailable"
-      })
+        bookAvailable: "Book/bookAvailable",
+        section: "Book/section",
+        fileName: "Book/filename"
+      }),
+      getSectionName() {
+        if (this.section) {                     /*获取当前的目录*/
+          const sectionInfo = this.currentBook.section(this.section)
+          if (sectionInfo && sectionInfo.href) {
+            return this.currentBook.navigation && this.currentBook.navigation.get(sectionInfo.href).label
+          }
+        }
+      },
     },
     methods: {
       onProgressChange(progress){
@@ -65,13 +78,45 @@
         this.$refs.progress.style.backgroundSize = `${this.progress}% 100%`
       },
       prevSection() {
-
+        console.log(this.section)
+        if (this.section > 0 && this.bookAvailable) {
+          this.setSection(this.section - 1)
+          const sectionInfo = this.currentBook.section(this.section)
+          if (sectionInfo && sectionInfo.href) {
+            this.currentBook.rendition.display(sectionInfo.href).then(() => {   /*渲染到指定的页面页数*/
+              this.refreshLocation()
+            })
+          }
+        }
       },
       nextSection() {
-
+        console.log(this.currentBook.spine, this.section)
+        if (this.section < this.currentBook.spine.length - 1 && this.bookAvailable) {
+          this.setSection(this.section + 1).then(() => {   /*渲染到指定的页面页数*/
+            this.displaySection()
+          })
+        }
+      },
+      displaySection() {
+        const sectionInfo = this.currentBook.section(this.section)
+        /*左右切换的时候调到指定的章节页面*/
+        if (sectionInfo && sectionInfo.href) {
+          this.currentBook.rendition.display(sectionInfo.href).then(()=>{
+            this.refreshLocation()
+          })
+        }
+      },
+      refreshLocation() {
+        const currentLocation = this.currentBook.rendition.currentLocation()
+        const progress = this.currentBook.locations.percentageFromCfi(currentLocation.start.cfi)
+        const startCfi = currentLocation.start.cfi;
+        /*通过第一个字获取当前读取进度*/
+        this.setProgress(Math.floor(progress * 100))
+        saveLocation(this.fileName, startCfi)
       },
       ...mapActions({
-        setProgress: "Book/setProgress"
+        setProgress: "Book/setProgress",
+        setSection: "Book/setSection"
       })
     },
     updated() {
