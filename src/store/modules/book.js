@@ -12,7 +12,8 @@ const Book = {
     fontFamilyVisible: false,
     defaultTheme: "default",
     progress: 0,
-    bookAvailable: false
+    bookAvailable: false,
+    section: 0
   },
   getters: {
     filename: state => state.fileName,
@@ -24,7 +25,8 @@ const Book = {
     fontFamilyVisible: state => state.fontFamilyVisible,
     defaultTheme: state => state.defaultTheme,
     bookAvailable: state => state.bookAvailable,
-    progress: state => state.progress
+    progress: state => state.progress,
+    section: state => state.section
   },
   actions: {
     setFileName: ({commit}, fileName) => {
@@ -56,6 +58,9 @@ const Book = {
     },
     setBookAvailable: ({commit}, bookAvailable) => {
       return commit(types.SET_BOOKAVAILABLE, bookAvailable)
+    },
+    setSection: ({commit}, section) => {
+      return commit(types.SET_SECTION, section)
     }
   },
   mutations: {
@@ -88,6 +93,9 @@ const Book = {
     },
     [types.SET_BOOKAVAILABLE](state, bookAvailable) {
       state.bookAvailable = bookAvailable
+    },
+    [types.SET_SECTION](state, section) {
+      state.section = section
     }
   }
 }
