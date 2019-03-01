@@ -3,7 +3,7 @@
     <div class="setting-wrapper" v-show="menuVisible&&settingVisible===2">
       <div class="setting-progress">
         <div class="read-time-wrapper">
-          <span class="read-time-text"></span>
+          <span class="read-time-text">{{getReadTimeText()}}</span>
           <span class="icon-forward"></span>
         </div>
         <div class="progress-wrapper">
@@ -36,7 +36,7 @@
 
 <script type="text/ecmascript-6">
   import { mapGetters, mapActions } from "vuex"
-  import { saveLocation } from "common/js/localStorage"
+  import { saveLocation, getReadTime } from "common/js/localStorage"
 
   export default {
     name: 'EbookSettingProgress',
@@ -54,7 +54,8 @@
         if (this.section) {                     /*获取当前的目录*/
           const sectionInfo = this.currentBook.section(this.section)
           if (sectionInfo && sectionInfo.href) {
-            return this.currentBook.navigation && this.currentBook.navigation.get(sectionInfo.href).label
+              console.log(2222,this.currentBook.navigation)
+            return this.currentBook.navigation.get(sectionInfo.href) && this.currentBook.navigation.get(sectionInfo.href).label
           }
         }
       },
@@ -101,7 +102,7 @@
         const sectionInfo = this.currentBook.section(this.section)
         /*左右切换的时候调到指定的章节页面*/
         if (sectionInfo && sectionInfo.href) {
-          this.currentBook.rendition.display(sectionInfo.href).then(()=>{
+          this.currentBook.rendition.display(sectionInfo.href).then(() => {
             this.refreshLocation()
           })
         }
@@ -113,6 +114,17 @@
         /*通过第一个字获取当前读取进度*/
         this.setProgress(Math.floor(progress * 100))
         saveLocation(this.fileName, startCfi)
+      },
+      getReadTimeText() {
+        return this.$t('book.haveRead').replace('$1', this.getReadTimeByMinute())
+      },
+      getReadTimeByMinute() {
+        const readTime = getReadTime(this.fileName)
+        if (!readTime) {
+          return 0
+        } else {
+          return Math.ceil(readTime / 60)
+        }
       },
       ...mapActions({
         setProgress: "Book/setProgress",
