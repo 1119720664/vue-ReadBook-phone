@@ -48,16 +48,18 @@
         progress: "Book/progress",
         bookAvailable: "Book/bookAvailable",
         section: "Book/section",
-        fileName: "Book/filename"
+        fileName: "Book/filename",
+        navigation:"Book/navigation"
       }),
       getSectionName() {
-        if (this.section) {                     /*获取当前的目录*/
-          const sectionInfo = this.currentBook.section(this.section)
-          if (sectionInfo && sectionInfo.href) {
-              console.log(2222,this.currentBook.navigation)
-            return this.currentBook.navigation.get(sectionInfo.href) && this.currentBook.navigation.get(sectionInfo.href).label
-          }
-        }
+        /*if (this.section) {                     /!*获取当前的目录*!/
+         const sectionInfo = this.currentBook.section(this.section)
+         if (sectionInfo && sectionInfo.href) {
+         return this.currentBook.navigation && this.currentBook.navigation.get(sectionInfo.href) && this.currentBook.navigation.get(sectionInfo.href).label
+         }
+         }*/
+        /*针对多级目录标题无法正确显示*/
+        return this.section ? this.navigation[this.section].label : ''
       },
     },
     methods: {
@@ -109,10 +111,11 @@
       },
       refreshLocation() {
         const currentLocation = this.currentBook.rendition.currentLocation()
-        const progress = this.currentBook.locations.percentageFromCfi(currentLocation.start.cfi)
+        const progress = this.currentBook.locations.percentageFromCfi(currentLocation.start && currentLocation.start.cfi)
         const startCfi = currentLocation.start.cfi;
         /*通过第一个字获取当前读取进度*/
         this.setProgress(Math.floor(progress * 100))
+        this.setSection(currentLocation.start.index)
         saveLocation(this.fileName, startCfi)
       },
       getReadTimeText() {

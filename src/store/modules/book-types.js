@@ -19,3 +19,9 @@ export const SET_PROGRESS = "SET_PROGRESS"
 export const SET_BOOKAVAILABLE = "SET_BOOKAVAILABLE"
 
 export const SET_SECTION = "SET_SECTION"
+
+export const SET_COVER = "SET_COVER"
+
+export const SET_METADATA = "SET_METADATA"
+
+export const SET_NAVIGATION = "SET_NAVIGATION"

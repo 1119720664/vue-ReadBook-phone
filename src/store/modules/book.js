@@ -13,7 +13,10 @@ const Book = {
     defaultTheme: "default",
     progress: 0,
     bookAvailable: false,
-    section: 0
+    section: 0,
+    cover: '',                   //封面的图片
+    metadata: {},
+    navigation: []               /*封面列表的数据*/
   },
   getters: {
     filename: state => state.fileName,
@@ -26,7 +29,10 @@ const Book = {
     defaultTheme: state => state.defaultTheme,
     bookAvailable: state => state.bookAvailable,
     progress: state => state.progress,
-    section: state => state.section
+    section: state => state.section,
+    cover: state => state.cover,
+    metadata: state => state.metadata,
+    navigation: state => state.navigation
   },
   actions: {
     setFileName: ({commit}, fileName) => {
@@ -61,7 +67,16 @@ const Book = {
     },
     setSection: ({commit}, section) => {
       return commit(types.SET_SECTION, section)
-    }
+    },
+    setCover: ({commit}, cover) => {
+      return commit(types.SET_COVER, cover)
+    },
+    setMetadata: ({commit}, metadata) => {
+      return commit(types.SET_METADATA, metadata)
+    },
+    setNavigation: ({commit}, navigation) => {
+      return commit(types.SET_NAVIGATION, navigation)
+    },
   },
   mutations: {
     [types.SET_FILENAME](state, fileName){
@@ -96,6 +111,15 @@ const Book = {
     },
     [types.SET_SECTION](state, section) {
       state.section = section
+    },
+    [types.SET_COVER](state, cover) {
+      state.cover = cover
+    },
+    [types.SET_METADATA](state, metadata) {
+      state.metadata = metadata
+    },
+    [types.SET_NAVIGATION](state, navigation) {
+      state.navigation = navigation
     }
   }
 }

@@ -20,6 +20,7 @@
     <book-setting-font-popop></book-setting-font-popop>
     <book-setting-theme></book-setting-theme>
     <book-setting-progress></book-setting-progress>
+    <book-slide></book-slide>
   </div>
 
 </template>
@@ -31,6 +32,7 @@
   import BookSettingFontPopop from "../ebook-setting-font-popop/ebook-setting-font-popop.vue"
   import BookSettingTheme from "../ebook-setting-theme/ebook-setting-theme.vue"
   import BookSettingProgress from "../ebook-setting-progress/ebook-setting-progress.vue"
+  import BookSlide from "../ebook-slide/ebook-slide.vue"
 
   export default {
     name: "EbookMenu",
@@ -48,7 +50,8 @@
       BookSettingFont,
       BookSettingFontPopop,
       BookSettingTheme,
-      BookSettingProgress
+      BookSettingProgress,
+      BookSlide
     }
   }
 </script>

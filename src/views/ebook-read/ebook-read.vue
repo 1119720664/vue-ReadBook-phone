@@ -9,7 +9,7 @@
   import Equb from "epubjs"
   import { EBookMixin } from "common/js/mixin"
   import { globalThemeCss } from "common/js/gloubThemeCss"
-  import { themeList } from "common/js/book-font"
+  import { themeList, flatten } from "common/js/book-font"
   import {
     saveFontFamily,
     getFontFamily,
@@ -74,6 +74,7 @@
 
           /*初始化设置是否存在location*/
           const location = getLocation(this.filename)
+          console.log(location)
           if (location) {
             this.display(location)
             this.refreshLocation()
@@ -125,18 +126,52 @@
             /*加载完成后显示进度的位置*/
           })
         })
+
+        /*获取图书封面的图片*/
+        this.book.loaded.cover.then(cover => {
+          this.book.archive.createUrl(cover).then(url => {
+            this.setCover(url)
+          })
+        })
+        this.book.loaded.metadata.then(metadata => {
+          this.setMetadata(metadata)
+        })
+
+        this.book.loaded.navigation.then(nav => {
+          console.log(nav.toc)
+          const navItem = flatten(nav.toc)
+          console.log(navItem)
+          function find(item, level = 0) {
+            if (!item.parent) {
+              return level
+            } else {
+              return find(navItem.filter(parentItem => parentItem.id === item.parent)[0], ++level)
+            }
+          }
+
+          navItem.forEach(item => {
+            item.level = find(item)
+          })
+          this.setNavigation(navItem)
+        })
       },
       prevPage() {
         this.rendition.prev()
         this.hideTitleAndMenu()
-        this.refreshLocation()
+        setTimeout(() => {
+          this.refreshLocation()
+        }, 20)
+        /*注:这里是有异步问题，否则无法实时更新标题*/
         /*存储当前读取的进度放在location*/
       },
       nextPage() {
         this.rendition.next()
         this.hideTitleAndMenu()
-        this.refreshLocation()
+        setTimeout(() => {
+          this.refreshLocation()
+        }, 20)
         /*存储当前读取的进度放在location*/
+        /*注:这里是有异步问题，否则无法实时更新标题*/
       },
       hideTitleAndMenu(){
         if (this.menuVisible) {
@@ -178,7 +213,10 @@
         setDefaultTheme: "Book/setDefaultTheme",
         setBookAvailable: "Book/setBookAvailable",
         setProgress: "Book/setProgress",
-        setSection: "Book/setSection"
+        setSection: "Book/setSection",
+        setCover: "Book/setCover",
+        setMetadata: "Book/setMetadata",
+        setNavigation: "Book/setNavigation"
       })
     }
   }

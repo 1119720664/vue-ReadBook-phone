@@ -9,7 +9,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   modules: {Book},
   strict: false,
-  plugins: debug ? [createLogger()] : []
+  /*plugins: debug ? [createLogger()] : []*/
 })
 
 export default store
