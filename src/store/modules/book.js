@@ -16,7 +16,10 @@ const Book = {
     section: 0,
     cover: '',                   //封面的图片
     metadata: {},
-    navigation: []               /*封面列表的数据*/
+    navigation: [], /*封面列表的数据*/
+    offsetY: 0,
+    isBookMask: false,
+    pageLists: []  /*分页的数据*/
   },
   getters: {
     filename: state => state.fileName,
@@ -32,7 +35,10 @@ const Book = {
     section: state => state.section,
     cover: state => state.cover,
     metadata: state => state.metadata,
-    navigation: state => state.navigation
+    navigation: state => state.navigation,
+    offsetY: state => state.offsetY,
+    isBookMask: state => state.isBookMask,
+    pageLists: state => state.pageLists
   },
   actions: {
     setFileName: ({commit}, fileName) => {
@@ -77,6 +83,15 @@ const Book = {
     setNavigation: ({commit}, navigation) => {
       return commit(types.SET_NAVIGATION, navigation)
     },
+    setOffsetY: ({commit}, offsetY) => {
+      return commit(types.SET_OFFSET, offsetY)
+    },
+    setBookMask: ({commit}, isBookMask) => {
+      return commit(types.SET_BOOKMASK, isBookMask)
+    },
+    setPageLists: ({commit}, pageLists) => {
+      return commit(types.SET_PAGELISTS, pageLists)
+    }
   },
   mutations: {
     [types.SET_FILENAME](state, fileName){
@@ -120,6 +135,15 @@ const Book = {
     },
     [types.SET_NAVIGATION](state, navigation) {
       state.navigation = navigation
+    },
+    [types.SET_OFFSET](state, offsetY) {
+      state.offsetY = offsetY
+    },
+    [types.SET_BOOKMASK](state, isBookMask) {
+      state.isBookMask = isBookMask
+    },
+    [types.SET_PAGELISTS](state, pageLists) {
+      state.pageLists = pageLists
     }
   }
 }

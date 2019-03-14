@@ -36,7 +36,7 @@
 
 <script type="text/ecmascript-6">
   import { mapGetters, mapActions } from "vuex"
-  import { saveLocation, getReadTime } from "common/js/localStorage"
+  import { saveLocation, getReadTime, getBookmark } from "common/js/localStorage"
 
   export default {
     name: 'EbookSettingProgress',
@@ -49,7 +49,7 @@
         bookAvailable: "Book/bookAvailable",
         section: "Book/section",
         fileName: "Book/filename",
-        navigation:"Book/navigation"
+        navigation: "Book/navigation"
       }),
       getSectionName() {
         /*if (this.section) {                     /!*获取当前的目录*!/
@@ -117,6 +117,16 @@
         this.setProgress(Math.floor(progress * 100))
         this.setSection(currentLocation.start.index)
         saveLocation(this.fileName, startCfi)
+        const bookmark = getBookmark(this.fileName)
+        if (bookmark) {
+          if (bookmark.some(item => item.cfi === startCfi)) {
+            this.setBookMask(true)
+          } else {
+            this.setBookMask(false)
+          }
+        } else {
+          this.setBookMask(false)
+        }
       },
       getReadTimeText() {
         return this.$t('book.haveRead').replace('$1', this.getReadTimeByMinute())
@@ -131,7 +141,8 @@
       },
       ...mapActions({
         setProgress: "Book/setProgress",
-        setSection: "Book/setSection"
+        setSection: "Book/setSection",
+        setBookMask: "Book/setBookMask"
       })
     },
     updated() {

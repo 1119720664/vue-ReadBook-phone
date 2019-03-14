@@ -25,3 +25,9 @@ export const SET_COVER = "SET_COVER"
 export const SET_METADATA = "SET_METADATA"
 
 export const SET_NAVIGATION = "SET_NAVIGATION"
+
+export const SET_OFFSET = "SET_OFFSET"
+
+export const SET_BOOKMASK = "SET_BOOKMASK"
+
+export const SET_PAGELISTS = "SET_PAGELISTS"
