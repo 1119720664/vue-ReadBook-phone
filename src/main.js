@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store/store'
 import i18n from "./lang"
+import mock from "./mock"
 import "./common/styles/reset.scss"
 import "./common/styles/icon.scss";
 import "./common/js/rem"

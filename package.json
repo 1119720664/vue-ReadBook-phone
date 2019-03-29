@@ -17,7 +17,8 @@
     "vue-i18n": "^8.8.0",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "web-storage-cache": "^1.0.3"
+    "web-storage-cache": "^1.0.3",
+    "axios": "^0.18.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.3.0",
@@ -31,7 +32,8 @@
     "chai": "^4.1.2",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.9.0",
+    "mockjs": "^1.0.1-beta3",
+    "node-sass": "^4.11.0",
     "sass-loader": "^7.0.1",
     "vue-template-compiler": "^2.5.21"
   }

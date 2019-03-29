@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import EBook from './components/ebook/ebook.vue'
+import EBookHome from './components/ebook-home/ebook-home.vue'
+import EBookFamily from './views/ebook-family/ebook-family.vue'
 import EBookRead from './views/ebook-read/ebook-read.vue'
+import EBookList from './views/ebook-book-list/ebook-book-list.vue'
+import EBookDetail from './views/ebook-book-detail/ebook-book-detail.vue'
 
 Vue.use(Router)
 
@@ -11,7 +15,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/ebook'
+      redirect: '/home'
     },
     {
       path: '/ebook',
@@ -24,5 +28,25 @@ export default new Router({
         }
       ]
     },
+    {
+      path: "/home",
+      name: "EBookHome",
+      component: EBookHome,
+      redirect: '/home/family',
+      children: [
+        {
+          path: "family",
+          component: EBookFamily
+        },
+        {
+          path: "list",
+          component: EBookList
+        },
+        {
+          path: "detail",
+          component: EBookDetail
+        }
+      ]
+    }
   ]
 })

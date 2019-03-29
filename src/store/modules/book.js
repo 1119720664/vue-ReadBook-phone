@@ -19,7 +19,7 @@ const Book = {
     navigation: [], /*封面列表的数据*/
     offsetY: 0,
     isBookMask: false,
-    pageLists: []  /*分页的数据*/
+    pageLists: [],  /*分页的数据*/
   },
   getters: {
     filename: state => state.fileName,
