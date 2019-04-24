@@ -82,9 +82,9 @@
   import Toast from '../ebook-toast/ebook-toast.vue'
   import { px2rem, realPx } from 'common/js/util'
  /* import { getLocalForage } from '@/utils/localForage'
-  import { getLocalStorage } from '@/utils/localStorage'
   import { removeFromBookShelf, addToShelf } from '@/utils/book'*/
   import { flatList, detail } from '../../api'
+  import { getLocalForage } from '../../common/js/localForage'
   import Epub from 'epubjs'
 
   global.ePub = Epub
@@ -177,7 +177,7 @@
               path: `/ebook/${this.bookItem.fileName}`
             })
           } else {
-            // this.showToast(this.$t('shelf.downloadFirst'))
+             this.showToast(this.$t('shelf.downloadFirst'))
             this.$router.push({
               path: `/ebook/${this.bookItem.fileName}`,
               query: {

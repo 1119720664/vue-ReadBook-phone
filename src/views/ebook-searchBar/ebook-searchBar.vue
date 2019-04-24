@@ -56,8 +56,12 @@
     },
     methods: {
       back() {
-        this.hideHotSearch()
         this.showTitle()
+        if (this.hotSearchVisible) {        /*少了一个返回书架的操作,这里添加上*/
+          this.hideHotSearch()
+        } else {
+          this.$router.push('/home/shelf')
+        }
       },
       showHotSearch() {
         this.hideTitle()

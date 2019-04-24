@@ -22,6 +22,8 @@
     getLocation,
     getBookmark
   } from "common/js/localStorage"
+  import { getLocalForage } from "../../common/js/localForage.js"
+
 
   export default {
     name: "eBookRead",
@@ -45,19 +47,34 @@
     },
     methods: {
       saveFileName(){
-        const filename = this.$route.params.filename
-        this.setFileName(filename).then(() => {
-          this.initEqub()
+        const filename = this.$route.params.filename.split("|")[0]
+        const fileNameKey = this.$route.params.filename.split("|")[1]
+        /*获取key,通过key来获取本地存储的值*/
+        getLocalForage(filename, (err, blob) => {
+          if (!err && blob) {
+            console.log("存在blob对象")
+            this.setFileName(filename).then(() => {
+              this.initEqub(blob)
+            })
+          }else{
+            console.log("在线获取电子书")
+            this.setFileName(filename).then(() => {
+              const ebookUrl = `${process.env.VUE_APP_RES_URL}/equb/${this.filename}.epub`
+              this.initEqub(ebookUrl)
+            })
+          }
         })
       },
-      initEqub() {
-        const ebookUrl = `${process.env.VUE_APP_RES_URL}/equb/${this.filename}.epub`;
+      initEqub(ebookUrl) {
+        /*  const ebookUrl = `${process.env.VUE_APP_RES_URL}/equb/${this.filename}.epub`*/
         this.book = new Equb(ebookUrl)
-        this.rendition = this.book.renderTo("read", {
-          width: innerWidth,
-          height: innerHeight,
+        console.log(this.book)
+        this.rendition = this.book.renderTo('read', {
+          width: window.innerWidth,
+          height: window.innerHeight,
           methods: 'default'
         })
+
         this.rendition.display().then(() => {
           /*初始化fontfamily字体*/
           let font = getFontFamily(this.filename)
@@ -83,7 +100,6 @@
             this.display(location)
             this.refreshLocation()
           }
-
           /*设置主题*/
           let defaultTheme = getTheme(this.filename)
           if (!defaultTheme) {
@@ -99,6 +115,7 @@
           /*设置全局主题样式*/
           globalThemeCss(this.defaultTheme)
         })
+
         this.rendition.on("touchstart", event => {
           this.touchStartX = event.changedTouches[0].pageX;
           this.touchStartTime = event.timeStamp;
@@ -236,13 +253,13 @@
         } else {
           this.setBookMask(false)
         }
-       /* if (this.pageLists) {  //设置分页,由于官方给的算法不是很清晰,所以省略
-          const totalPage = this.pageLists.length
-          const currentPage = currentLocation.start.location
-          if (currentPage && currentPage > 0) {
-              this.setP
-          }
-        }*/
+        /* if (this.pageLists) {  //设置分页,由于官方给的算法不是很清晰,所以省略
+         const totalPage = this.pageLists.length
+         const currentPage = currentLocation.start.location
+         if (currentPage && currentPage > 0) {
+         this.setP
+         }
+         }*/
       },
       display(target) {
         if (target) {

@@ -1,25 +1,25 @@
 module.exports = {
-  'guessYouLike':
-    [
-      {
-        'id': 197,
-        'fileName': '2016_Book_NewHorizonsForAData-DrivenEcon',
-        'cover': 'http://47.99.166.157/book/res/img/ComputerScience/2016_Book_NewHorizonsForAData-DrivenEcon.jpeg',
-        'title': 'New Horizons for a Data-Driven Economy',
-        'author': 'José María Cavanillas, Edward Curry and Wolfgang Wahlster',
-        'publisher': 'Springer International Publishing, Cham',
-        'bookId': '2016_Book_NewHorizonsForAData-DrivenEcon',
-        'category': 1,
-        'categoryText': 'ComputerScience',
-        'language': 'en',
-        'selected': false,
-        'private': false,
-        'cache': false,
-        'haveRead': 0,
-        'type': 3,
-        'result': '《Living with Disfigurement》',
-        'percent': '97%'
-      }, {
+  'guessYouLike': [
+    {
+      'id': 197,
+      'fileName': '2016_Book_NewHorizonsForAData-DrivenEcon',
+      'cover': 'http://47.99.166.157/book/res/img/ComputerScience/2016_Book_NewHorizonsForAData-DrivenEcon.jpeg',
+      'title': 'New Horizons for a Data-Driven Economy',
+      'author': 'José María Cavanillas, Edward Curry and Wolfgang Wahlster',
+      'publisher': 'Springer International Publishing, Cham',
+      'bookId': '2016_Book_NewHorizonsForAData-DrivenEcon',
+      'category': 1,
+      'categoryText': 'ComputerScience',
+      'language': 'en',
+      'selected': false,
+      'private': false,
+      'cache': false,
+      'haveRead': 0,
+      'type': 1,
+      'result': '《Living with Disfigurement》',
+      'percent': '97%'
+    },
+    {
       'id': 15,
       'fileName': '2018_Book_HandbookOfMathematicalGeoscien',
       'cover': 'http://47.99.166.157/book/res/img/EarthSciences/978-3-319-78999-6_CoverFigure.jpg',
@@ -34,9 +34,10 @@ module.exports = {
       'private': false,
       'cache': false,
       'haveRead': 0,
-      'type': 2,
+      'type': 1,
       'result': '《Programming Languages》'
-    }, {
+    },
+    {
       'id': 230,
       'fileName': '2017_Book_InstitutionalReformForInnovati',
       'cover': 'http://47.99.166.157/book/res/img/Economics/2017_Book_InstitutionalReformForInnovati.jpeg',
@@ -51,10 +52,11 @@ module.exports = {
       'private': false,
       'cache': false,
       'haveRead': 0,
-      'type': 3,
+      'type': 1,
       'result': '《Living with Disfigurement》',
       'percent': '92%'
-    }, {
+    },
+    {
       'id': 99,
       'fileName': '2018_Book_Africa-EuropeResearchAndInnova',
       'cover': 'http://47.99.166.157/book/res/img/PoliticalScienceAndInternationalRelations/978-3-319-69929-5_CoverFigure.jpg',
@@ -69,10 +71,11 @@ module.exports = {
       'private': false,
       'cache': false,
       'haveRead': 0,
-      'type': 3,
+      'type': 1,
       'result': '《Living with Disfigurement》',
       'percent': '97%'
-    }, {
+    },
+    {
       'id': 204,
       'fileName': '2018_Book_ElementsOfRobotics',
       'cover': 'http://47.99.166.157/book/res/img/ComputerScience/2018_Book_ElementsOfRobotics.jpeg',
@@ -88,8 +91,13 @@ module.exports = {
       'cache': false,
       'haveRead': 0,
       'type': 2,
-      'result': '《Improving Psychiatric Care》'
-    }, {
+      'result': '《Improving Psychiatric Care》',
+      "itemList": [
+        {'img': 'http://47.99.166.157/book/res/cover/ss/A978-3-319-61291-1_CoverFigure.jpg'},
+        {'img': 'http://47.99.166.157/book/res/cover/ss/A978-3-319-69299-9_CoverFigure.jpg'}
+      ],
+    },
+    {
       'id': 440,
       'fileName': '2017_Book_SituatingChildrenOfMigrantsAcr',
       'cover': 'http://47.99.166.157/book/res/img/SocialSciences/2017_Book_SituatingChildrenOfMigrantsAcr.jpeg',
@@ -104,10 +112,11 @@ module.exports = {
       'private': false,
       'cache': false,
       'haveRead': 0,
-      'type': 3,
+      'type': 1,
       'result': '《Living with Disfigurement》',
       'percent': '92%'
-    }, {
+    },
+    {
       'id': 71,
       'fileName': '2018_Book_FragilityFractureNursing',
       'cover': 'http://47.99.166.157/book/res/img/MedicineAndPublicHealth/978-3-319-76681-2_CoverFigure.jpg',
@@ -124,7 +133,8 @@ module.exports = {
       'haveRead': 0,
       'type': 1,
       'result': '《Elements Of Robotics》'
-    }, {
+    },
+    {
       'id': 189,
       'fileName': '2015_Book_Re-engineeringTheUptakeOfICTIn',
       'cover': 'http://47.99.166.157/book/res/img/ComputerScience/2015_Book_Re-engineeringTheUptakeOfICTIn.jpeg',
@@ -141,7 +151,8 @@ module.exports = {
       'haveRead': 0,
       'type': 1,
       'result': '《Elements Of Robotics》'
-    }, {
+    },
+    {
       'id': 165,
       'fileName': '2013_Book_ManagingRiskAndInformationSecu',
       'cover': 'http://47.99.166.157/book/res/img/ComputerScience/2013_Book_ManagingRiskAndInformationSecu.jpeg',
@@ -156,30 +167,29 @@ module.exports = {
       'private': false,
       'cache': false,
       'haveRead': 0,
-      'type': 3,
+      'type': 1,
       'result': '《Living with Disfigurement》',
       'percent': '97%'
     }],
   'banner': 'http://47.99.166.157/book/res/home_banner.jpg',
-  'recommend':
-    [
-      {
-        'id': 324,
-        'fileName': '2017_Book_HistoryEducationAndConflictTra',
-        'cover': 'http://47.99.166.157/book/res/img/Education/2017_Book_HistoryEducationAndConflictTra.jpeg',
-        'title': 'History Education and Conflict Transformation',
-        'author': 'Charis Psaltis, Mario Carretero and Sabina Čehajić-Clancy',
-        'publisher': 'Springer International Publishing, Cham',
-        'bookId': '2017_Book_HistoryEducationAndConflictTra',
-        'category': 4,
-        'categoryText': 'Education',
-        'language': 'en',
-        'selected': false,
-        'private': false,
-        'cache': false,
-        'haveRead': 0,
-        'readers': 8586
-      }, {
+  'recommend': [
+    {
+      'id': 324,
+      'fileName': '2017_Book_HistoryEducationAndConflictTra',
+      'cover': 'http://47.99.166.157/book/res/img/Education/2017_Book_HistoryEducationAndConflictTra.jpeg',
+      'title': 'History Education and Conflict Transformation',
+      'author': 'Charis Psaltis, Mario Carretero and Sabina Čehajić-Clancy',
+      'publisher': 'Springer International Publishing, Cham',
+      'bookId': '2017_Book_HistoryEducationAndConflictTra',
+      'category': 4,
+      'categoryText': 'Education',
+      'language': 'en',
+      'selected': false,
+      'private': false,
+      'cache': false,
+      'haveRead': 0,
+      'readers': 8586
+    }, {
       'id': 83,
       'fileName': '2018_Book_PeerReviewPeerEducationAndMode',
       'cover': 'http://47.99.166.157/book/res/img/Philosophy/978-3-319-90955-4_CoverFigure.jpg',
@@ -212,24 +222,23 @@ module.exports = {
       'haveRead': 0,
       'readers': 3993
     }],
-  'featured':
-    [
-      {
-        'id': 166,
-        'fileName': '2013_Book_Office365',
-        'cover': 'http://47.99.166.157/book/res/img/ComputerScience/2013_Book_Office365.jpeg',
-        'title': 'Office 365',
-        'author': 'Matthew Katzer and Don Crawford',
-        'publisher': 'Apress, Berkeley, CA',
-        'bookId': '2013_Book_Office365',
-        'category': 1,
-        'categoryText': 'ComputerScience',
-        'language': 'en',
-        'selected': false,
-        'private': false,
-        'cache': false,
-        'haveRead': 0
-      }, {
+  'featured': [
+    {
+      'id': 166,
+      'fileName': '2013_Book_Office365',
+      'cover': 'http://47.99.166.157/book/res/img/ComputerScience/2013_Book_Office365.jpeg',
+      'title': 'Office 365',
+      'author': 'Matthew Katzer and Don Crawford',
+      'publisher': 'Apress, Berkeley, CA',
+      'bookId': '2013_Book_Office365',
+      'category': 1,
+      'categoryText': 'ComputerScience',
+      'language': 'en',
+      'selected': false,
+      'private': false,
+      'cache': false,
+      'haveRead': 0
+    }, {
       'id': 272,
       'fileName': '2017_Book_TheInterconnectedArcticUArctic',
       'cover': 'http://47.99.166.157/book/res/img/Environment/2017_Book_TheInterconnectedArcticUArctic.jpeg',
@@ -308,44 +317,43 @@ module.exports = {
       'cache': false,
       'haveRead': 0
     }],
-  'categoryList':
-    [
-      {
+  'categoryList': [
+    {
+      'category': 2,
+      'list': [{
+        'cover': 'http://47.99.166.157/book/res/cover/ss/A978-3-319-61291-1_CoverFigure.jpg',
+        'title': 'Care in Healthcare',
+        'author': 'Franziska Krause and Joachim Boldt',
+        'publisher': 'Springer International Publishing, Cham',
+        'bookId': '978-3-319-61291-1',
         'category': 2,
-        'list': [{
-          'cover': 'http://47.99.166.157/book/res/cover/ss/A978-3-319-61291-1_CoverFigure.jpg',
-          'title': 'Care in Healthcare',
-          'author': 'Franziska Krause and Joachim Boldt',
-          'publisher': 'Springer International Publishing, Cham',
-          'bookId': '978-3-319-61291-1',
-          'category': 2,
-          'fileName': '2018_Book_CareInHealthcare'
-        }, {
-          'cover': 'http://47.99.166.157/book/res/cover/ss/A978-3-319-69299-9_CoverFigure.jpg',
-          'title': 'Energy Poverty',
-          'author': 'Stefan Bouzarovski',
-          'publisher': 'Springer International Publishing, Cham',
-          'bookId': '978-3-319-69299-9',
-          'category': 2,
-          'fileName': '2018_Book_EnergyPoverty'
-        }, {
-          'cover': 'http://47.99.166.157/book/res/cover/ss/A978-981-10-7119-5_CoverFigure.jpg',
-          'title': 'Pragmatic Philanthropy',
-          'author': 'Ruth A. Shapiro, Manisha Mirchandani and Heesu Jang',
-          'publisher': 'Springer International Publishing, Cham',
-          'bookId': '978-981-10-7119-5',
-          'category': 2,
-          'fileName': '2018_Book_PragmaticPhilanthropy'
-        }, {
-          'cover': 'http://47.99.166.157/book/res/cover/ss/A978-3-319-68418-5_CoverFigure.jpg',
-          'title': 'Weather & Climate Services for the Energy Industry',
-          'author': 'Alberto Troccoli',
-          'publisher': 'Springer International Publishing, Cham',
-          'bookId': '978-3-319-68418-5',
-          'category': 2,
-          'fileName': '2018_Book_WeatherClimateServicesForTheEn'
-        }]
+        'fileName': '2018_Book_CareInHealthcare'
       }, {
+        'cover': 'http://47.99.166.157/book/res/cover/ss/A978-3-319-69299-9_CoverFigure.jpg',
+        'title': 'Energy Poverty',
+        'author': 'Stefan Bouzarovski',
+        'publisher': 'Springer International Publishing, Cham',
+        'bookId': '978-3-319-69299-9',
+        'category': 2,
+        'fileName': '2018_Book_EnergyPoverty'
+      }, {
+        'cover': 'http://47.99.166.157/book/res/cover/ss/A978-981-10-7119-5_CoverFigure.jpg',
+        'title': 'Pragmatic Philanthropy',
+        'author': 'Ruth A. Shapiro, Manisha Mirchandani and Heesu Jang',
+        'publisher': 'Springer International Publishing, Cham',
+        'bookId': '978-981-10-7119-5',
+        'category': 2,
+        'fileName': '2018_Book_PragmaticPhilanthropy'
+      }, {
+        'cover': 'http://47.99.166.157/book/res/cover/ss/A978-3-319-68418-5_CoverFigure.jpg',
+        'title': 'Weather & Climate Services for the Energy Industry',
+        'author': 'Alberto Troccoli',
+        'publisher': 'Springer International Publishing, Cham',
+        'bookId': '978-3-319-68418-5',
+        'category': 2,
+        'fileName': '2018_Book_WeatherClimateServicesForTheEn'
+      }]
+    }, {
       'category': 3,
       'list': [{
         'cover': 'http://47.99.166.157/book/res/cover/eco/A978-3-319-69772-7_CoverFigure.jpg',
@@ -451,14 +459,13 @@ module.exports = {
         'fileName': '2018_Book_MusicalHaptics'
       }]
     }],
-  'categories':
-    [
-      {
-        'category': 1,
-        'num': 56,
-        'img1': 'http://47.99.166.157/book/res/cover/cs/A978-3-319-62533-1_CoverFigure.jpg',
-        'img2': 'http://47.99.166.157/book/res/cover/cs/A978-3-319-89366-2_CoverFigure.jpg'
-      }, {
+  'categories': [
+    {
+      'category': 1,
+      'num': 56,
+      'img1': 'http://47.99.166.157/book/res/cover/cs/A978-3-319-62533-1_CoverFigure.jpg',
+      'img2': 'http://47.99.166.157/book/res/cover/cs/A978-3-319-89366-2_CoverFigure.jpg'
+    }, {
       'category': 2,
       'num': 51,
       'img1': 'http://47.99.166.157/book/res/cover/ss/A978-3-319-61291-1_CoverFigure.jpg',
@@ -564,24 +571,23 @@ module.exports = {
       'img1': 'http://47.99.166.157/book/res/cover/sta/2013_Book_ShipAndOffshoreStructureDesign.jpeg',
       'img2': 'http://47.99.166.157/book/res/cover/sta/2013_Book_ShipAndOffshoreStructureDesign.jpeg'
     }],
-  'random':
-    [
-      {
-        'id': 267,
-        'fileName': '2017_Book_HighMountainConservationInACha',
-        'cover': 'http://47.99.166.157/book/res/img/Environment/2017_Book_HighMountainConservationInACha.jpeg',
-        'title': 'High Mountain Conservation in a Changing World',
-        'author': 'Jordi Catalan, Josep M Ninot and M. Mercè Aniz',
-        'publisher': 'Springer International Publishing, Cham',
-        'bookId': '2017_Book_HighMountainConservationInACha',
-        'category': 6,
-        'categoryText': 'Environment',
-        'language': 'en',
-        'selected': false,
-        'private': false,
-        'cache': false,
-        'haveRead': 0
-      }, {
+  'random': [
+    {
+      'id': 267,
+      'fileName': '2017_Book_HighMountainConservationInACha',
+      'cover': 'http://47.99.166.157/book/res/img/Environment/2017_Book_HighMountainConservationInACha.jpeg',
+      'title': 'High Mountain Conservation in a Changing World',
+      'author': 'Jordi Catalan, Josep M Ninot and M. Mercè Aniz',
+      'publisher': 'Springer International Publishing, Cham',
+      'bookId': '2017_Book_HighMountainConservationInACha',
+      'category': 6,
+      'categoryText': 'Environment',
+      'language': 'en',
+      'selected': false,
+      'private': false,
+      'cache': false,
+      'haveRead': 0
+    }, {
       'id': 460,
       'fileName': '2017_Book_RisingPowersAndPeacebuilding',
       'cover': 'http://47.99.166.157/book/res/img/PoliticalScienceAndInternationalRelations/2017_Book_RisingPowersAndPeacebuilding.jpeg',
